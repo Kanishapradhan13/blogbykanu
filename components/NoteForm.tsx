@@ -57,14 +57,14 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem", flexWrap: "wrap", gap: "1rem" }}>
           <div>
-            <p style={{ color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.8rem", marginBottom: "0.25rem" }}>
+            <p style={{ color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.8rem", marginBottom: "0.25rem" }}>
               ✦ {mode === "create" ? "new note" : "edit note"}
             </p>
-            <h1 style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "1.25rem", fontWeight: 700, color: "#ede9fe" }}>
+            <h1 style={{ fontFamily: "var(--font-sans)", fontSize: "1.25rem", fontWeight: 700, color: "#ede9fe" }}>
               {mode === "create" ? "Create Note" : "Edit Note"}
             </h1>
           </div>
-          <span style={{ color: "#3d2f5a", fontFamily: "JetBrains Mono, monospace", fontSize: "0.7rem" }}>
+          <span style={{ color: "#3d2f5a", fontFamily: "var(--font-sans)", fontSize: "0.7rem" }}>
             ⌘S to save
           </span>
         </div>
@@ -83,7 +83,7 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
             }}
           >
             <div>
-              <label style={{ display: "block", color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.75rem", marginBottom: "0.4rem" }}>
+              <label style={{ display: "block", color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.75rem", marginBottom: "0.4rem" }}>
                 title
               </label>
               <input
@@ -99,7 +99,7 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
             </div>
 
             <div>
-              <label style={{ display: "block", color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.75rem", marginBottom: "0.4rem" }}>
+              <label style={{ display: "block", color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.75rem", marginBottom: "0.4rem" }}>
                 category
               </label>
               <input
@@ -123,7 +123,7 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
 
           {/* Tags */}
           <div style={{ marginBottom: "1.25rem" }}>
-            <label style={{ display: "block", color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.75rem", marginBottom: "0.4rem" }}>
+            <label style={{ display: "block", color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.75rem", marginBottom: "0.4rem" }}>
               tags <span style={{ opacity: 0.5 }}>(comma-separated)</span>
             </label>
             <input
@@ -147,7 +147,7 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
                   background: tab === t ? "rgba(196,181,253,0.1)" : "transparent",
                   border: `1px solid ${tab === t ? "#c4b5fd" : "#2e1f4a"}`,
                   color: tab === t ? "#c4b5fd" : "#7c6a9e",
-                  fontFamily: "JetBrains Mono, monospace",
+                  fontFamily: "var(--font-sans)",
                   fontSize: "0.75rem",
                   padding: "0.3rem 0.75rem",
                   cursor: "pointer",
@@ -181,10 +181,10 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
                 alignItems: "center",
                 gap: "0.5rem",
               }}>
-                <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "JetBrains Mono, monospace" }}>
+                <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
                   editor.md
                 </span>
-                <span style={{ marginLeft: "auto", color: "#3d2f5a", fontSize: "0.65rem", fontFamily: "JetBrains Mono, monospace" }}>
+                <span style={{ marginLeft: "auto", color: "#3d2f5a", fontSize: "0.65rem", fontFamily: "var(--font-sans)" }}>
                   {content.split(/\s+/).filter(Boolean).length} words
                 </span>
               </div>
@@ -232,10 +232,10 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
                 alignItems: "center",
                 gap: "0.5rem",
               }}>
-                <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "JetBrains Mono, monospace" }}>
+                <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
                   preview
                 </span>
-                <span style={{ marginLeft: "auto", color: "#c4b5fd", fontSize: "0.65rem", fontFamily: "JetBrains Mono, monospace" }}>
+                <span style={{ marginLeft: "auto", color: "#c4b5fd", fontSize: "0.65rem", fontFamily: "var(--font-sans)" }}>
                   ✦ live
                 </span>
               </div>

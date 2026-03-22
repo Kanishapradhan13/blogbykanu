@@ -24,7 +24,7 @@ export default function NoteCard({ note }: { note: Note }) {
           <h3
             style={{
               color: "#ede9fe",
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontWeight: 600,
               fontSize: "0.95rem",
               lineHeight: 1.4,
@@ -45,7 +45,7 @@ export default function NoteCard({ note }: { note: Note }) {
           <p
             style={{
               color: "#7c6a9e",
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "0.78rem",
               lineHeight: 1.6,
               marginBottom: "0.75rem",
@@ -66,7 +66,7 @@ export default function NoteCard({ note }: { note: Note }) {
               <TagPill key={tag} tag={tag} />
             ))}
             {note.tags.length > 4 && (
-              <span style={{ fontSize: "0.65rem", color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace" }}>
+              <span style={{ fontSize: "0.65rem", color: "#7c6a9e", fontFamily: "var(--font-sans)" }}>
                 +{note.tags.length - 4}
               </span>
             )}
@@ -84,10 +84,10 @@ export default function NoteCard({ note }: { note: Note }) {
             marginTop: "auto",
           }}
         >
-          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "JetBrains Mono, monospace" }}>
+          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
             {formatDate(note.created_at)}
           </span>
-          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "JetBrains Mono, monospace" }}>
+          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
             {wordCount}w · {readTime}m read
           </span>
         </div>

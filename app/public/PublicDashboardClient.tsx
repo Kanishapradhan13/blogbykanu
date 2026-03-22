@@ -25,7 +25,7 @@ function PublicNoteCard({ note }: { note: Note }) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "0.75rem", gap: "0.75rem" }}>
           <h3 style={{
             color: "#ede9fe",
-            fontFamily: "JetBrains Mono, monospace",
+            fontFamily: "var(--font-sans)",
             fontWeight: 600,
             fontSize: "0.95rem",
             lineHeight: 1.4,
@@ -43,7 +43,7 @@ function PublicNoteCard({ note }: { note: Note }) {
         {note.excerpt && (
           <p style={{
             color: "#7c6a9e",
-            fontFamily: "JetBrains Mono, monospace",
+            fontFamily: "var(--font-sans)",
             fontSize: "0.78rem",
             lineHeight: 1.6,
             marginBottom: "0.75rem",
@@ -62,7 +62,7 @@ function PublicNoteCard({ note }: { note: Note }) {
               <TagPill key={tag} tag={tag} />
             ))}
             {note.tags.length > 4 && (
-              <span style={{ fontSize: "0.65rem", color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace" }}>
+              <span style={{ fontSize: "0.65rem", color: "#7c6a9e", fontFamily: "var(--font-sans)" }}>
                 +{note.tags.length - 4}
               </span>
             )}
@@ -77,10 +77,10 @@ function PublicNoteCard({ note }: { note: Note }) {
           borderTop: "1px solid #2e1f4a",
           marginTop: "auto",
         }}>
-          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "JetBrains Mono, monospace" }}>
+          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
             {formatDate(note.created_at)}
           </span>
-          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "JetBrains Mono, monospace" }}>
+          <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
             {wordCount}w · {readTime}m read
           </span>
         </div>
@@ -127,7 +127,7 @@ export default function PublicDashboardClient({ notes }: { notes: Note[] }) {
           marginBottom: "1.75rem",
           width: "fit-content",
         }}>
-          <span style={{ color: "#c4b5fd", fontFamily: "JetBrains Mono, monospace", fontSize: "0.72rem" }}>
+          <span style={{ color: "#c4b5fd", fontFamily: "var(--font-sans)", fontSize: "0.72rem" }}>
             ✦ public view · read-only
           </span>
         </div>
@@ -143,19 +143,19 @@ export default function PublicDashboardClient({ notes }: { notes: Note[] }) {
         }}>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.25rem" }}>
-              <span style={{ color: "#c4b5fd", fontFamily: "JetBrains Mono, monospace", fontSize: "0.85rem" }}>
+              <span style={{ color: "#c4b5fd", fontFamily: "var(--font-sans)", fontSize: "0.85rem" }}>
                 ✦ cybernotes
               </span>
             </div>
             <h1 style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "1.5rem",
               fontWeight: 700,
               color: "#ede9fe",
             }}>
               kanisha&apos;s notes
             </h1>
-            <p style={{ color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.8rem", marginTop: "0.25rem" }}>
+            <p style={{ color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.8rem", marginTop: "0.25rem" }}>
               {notes.length} note{notes.length !== 1 ? "s" : ""} · read-only
             </p>
           </div>
@@ -170,7 +170,7 @@ export default function PublicDashboardClient({ notes }: { notes: Note[] }) {
               top: "50%",
               transform: "translateY(-50%)",
               color: "#7c6a9e",
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "0.85rem",
               pointerEvents: "none",
             }}>
@@ -204,7 +204,7 @@ export default function PublicDashboardClient({ notes }: { notes: Note[] }) {
                 background: activeCategory === cat ? "rgba(196,181,253,0.1)" : "transparent",
                 border: `1px solid ${activeCategory === cat ? "#c4b5fd" : "#2e1f4a"}`,
                 color: activeCategory === cat ? "#c4b5fd" : "#7c6a9e",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.7rem",
                 padding: "0.3rem 0.75rem",
                 cursor: "pointer",
@@ -227,7 +227,7 @@ export default function PublicDashboardClient({ notes }: { notes: Note[] }) {
             borderRadius: "8px",
           }}>
             <p style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               color: "#7c6a9e",
               fontSize: "0.85rem",
             }}>

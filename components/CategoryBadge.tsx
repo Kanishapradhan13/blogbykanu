@@ -21,7 +21,7 @@ export default function CategoryBadge({ category }: { category: string }) {
         alignItems: "center",
         padding: "0.2rem 0.6rem",
         fontSize: "0.65rem",
-        fontFamily: "JetBrains Mono, monospace",
+        fontFamily: "var(--font-sans)",
         fontWeight: 600,
         letterSpacing: "0.1em",
         color: style.color,

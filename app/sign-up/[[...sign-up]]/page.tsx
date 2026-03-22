@@ -42,7 +42,7 @@ export default function SignUpPage() {
         <div style={{ textAlign: "center", marginBottom: "2rem" }}>
           <p
             style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "1.6rem",
               color: "#c4b5fd",
               fontWeight: 700,
@@ -53,7 +53,7 @@ export default function SignUpPage() {
           </p>
           <p
             style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "0.8rem",
               color: "#7c6a9e",
               marginTop: "0.5rem",

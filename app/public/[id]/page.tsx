@@ -45,7 +45,7 @@ export default async function PublicNoteViewPage({
             padding: "0.35rem 0.75rem",
             marginBottom: "1.25rem",
           }}>
-            <span style={{ color: "#c4b5fd", fontFamily: "JetBrains Mono, monospace", fontSize: "0.68rem" }}>
+            <span style={{ color: "#c4b5fd", fontFamily: "var(--font-sans)", fontSize: "0.68rem" }}>
               ✦ public view · read-only
             </span>
           </div>
@@ -56,7 +56,7 @@ export default async function PublicNoteViewPage({
               href="/public"
               style={{
                 color: "#7c6a9e",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.8rem",
                 textDecoration: "none",
               }}
@@ -78,7 +78,7 @@ export default async function PublicNoteViewPage({
             </div>
 
             <h1 style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "1.6rem",
               fontWeight: 700,
               color: "#ede9fe",
@@ -110,10 +110,10 @@ export default async function PublicNoteViewPage({
                 { label: "read time", value: `~${readTime} min` },
               ].map(({ label, value }) => (
                 <div key={label}>
-                  <span style={{ color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.65rem", display: "block" }}>
+                  <span style={{ color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.65rem", display: "block" }}>
                     {label}
                   </span>
-                  <span style={{ color: "#ede9fe", fontFamily: "JetBrains Mono, monospace", fontSize: "0.78rem" }}>
+                  <span style={{ color: "#ede9fe", fontFamily: "var(--font-sans)", fontSize: "0.78rem" }}>
                     {value}
                   </span>
                 </div>

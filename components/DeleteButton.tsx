@@ -31,7 +31,7 @@ export default function DeleteButton({ noteId, deleteAction }: DeleteButtonProps
   if (confirming) {
     return (
       <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <span style={{ color: "#fb7185", fontFamily: "JetBrains Mono, monospace", fontSize: "0.8rem" }}>
+        <span style={{ color: "#fb7185", fontFamily: "var(--font-sans)", fontSize: "0.8rem" }}>
           delete this note?
         </span>
         <button
@@ -43,7 +43,7 @@ export default function DeleteButton({ noteId, deleteAction }: DeleteButtonProps
             border: "1px solid #fb7185",
             color: "#fb7185",
             background: "rgba(251,113,133,0.08)",
-            fontFamily: "JetBrains Mono, monospace",
+            fontFamily: "var(--font-sans)",
             cursor: "pointer",
             borderRadius: "6px",
           }}
@@ -57,7 +57,7 @@ export default function DeleteButton({ noteId, deleteAction }: DeleteButtonProps
             background: "transparent",
             border: "1px solid #2e1f4a",
             color: "#7c6a9e",
-            fontFamily: "JetBrains Mono, monospace",
+            fontFamily: "var(--font-sans)",
             fontSize: "0.75rem",
             padding: "0.4rem 0.8rem",
             cursor: "pointer",
@@ -80,7 +80,7 @@ export default function DeleteButton({ noteId, deleteAction }: DeleteButtonProps
         border: "1px solid rgba(251,113,133,0.4)",
         color: "#fb7185",
         background: "rgba(251,113,133,0.06)",
-        fontFamily: "JetBrains Mono, monospace",
+        fontFamily: "var(--font-sans)",
         fontSize: "0.75rem",
         cursor: "pointer",
         borderRadius: "6px",

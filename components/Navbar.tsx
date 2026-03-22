@@ -47,7 +47,7 @@ export default function Navbar() {
             <span
               style={{
                 color: "#c4b5fd",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontWeight: 700,
                 fontSize: "1rem",
                 textShadow: "0 0 10px rgba(196,181,253,0.4)",
@@ -66,7 +66,7 @@ export default function Navbar() {
                   href="/dashboard"
                   style={{
                     color: pathname === "/dashboard" ? "#c4b5fd" : "#7c6a9e",
-                    fontFamily: "JetBrains Mono, monospace",
+                    fontFamily: "var(--font-sans)",
                     fontSize: "0.8rem",
                     textDecoration: "none",
                     transition: "color 0.2s",
@@ -80,7 +80,7 @@ export default function Navbar() {
                   href="/notes/new"
                   style={{
                     color: pathname === "/notes/new" ? "#c4b5fd" : "#7c6a9e",
-                    fontFamily: "JetBrains Mono, monospace",
+                    fontFamily: "var(--font-sans)",
                     fontSize: "0.8rem",
                     textDecoration: "none",
                     transition: "color 0.2s",

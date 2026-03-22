@@ -49,13 +49,13 @@ export default function DashboardClient({
         >
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.25rem" }}>
-              <span style={{ color: "#c4b5fd", fontFamily: "JetBrains Mono, monospace", fontSize: "0.85rem" }}>
+              <span style={{ color: "#c4b5fd", fontFamily: "var(--font-sans)", fontSize: "0.85rem" }}>
                 ✦ blogbykanu
               </span>
             </div>
             <h1
               style={{
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontSize: "1.5rem",
                 fontWeight: 700,
                 color: "#ede9fe",
@@ -66,7 +66,7 @@ export default function DashboardClient({
                 {username}
               </span>
             </h1>
-            <p style={{ color: "#7c6a9e", fontFamily: "JetBrains Mono, monospace", fontSize: "0.8rem", marginTop: "0.25rem" }}>
+            <p style={{ color: "#7c6a9e", fontFamily: "var(--font-sans)", fontSize: "0.8rem", marginTop: "0.25rem" }}>
               {notes.length} note{notes.length !== 1 ? "s" : ""} in your collection
             </p>
           </div>
@@ -84,7 +84,7 @@ export default function DashboardClient({
                 border: "1px solid rgba(196,181,253,0.35)",
                 color: "#c4b5fd",
                 background: "transparent",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.78rem",
                 textDecoration: "none",
                 borderRadius: "6px",
@@ -109,7 +109,7 @@ export default function DashboardClient({
                 top: "50%",
                 transform: "translateY(-50%)",
                 color: "#7c6a9e",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.85rem",
                 pointerEvents: "none",
               }}
@@ -146,7 +146,7 @@ export default function DashboardClient({
                 background: activeCategory === cat ? "rgba(196,181,253,0.1)" : "transparent",
                 border: `1px solid ${activeCategory === cat ? "#c4b5fd" : "#2e1f4a"}`,
                 color: activeCategory === cat ? "#c4b5fd" : "#7c6a9e",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontSize: "0.7rem",
                 padding: "0.3rem 0.75rem",
                 cursor: "pointer",
@@ -172,7 +172,7 @@ export default function DashboardClient({
           >
             <p
               style={{
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 color: "#7c6a9e",
                 fontSize: "0.85rem",
                 marginBottom: "0.5rem",
@@ -187,7 +187,7 @@ export default function DashboardClient({
                 href="/notes/new"
                 style={{
                   color: "#c4b5fd",
-                  fontFamily: "JetBrains Mono, monospace",
+                  fontFamily: "var(--font-sans)",
                   fontSize: "0.8rem",
                   textDecoration: "none",
                 }}

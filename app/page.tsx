@@ -330,7 +330,7 @@ function NoteModal({ note, onClose }: { note: MockNote; onClose: () => void }) {
               borderRadius: "4px",
               fontSize: "0.62rem",
               color,
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontWeight: 600,
               letterSpacing: "0.08em",
               marginBottom: "0.6rem",
@@ -338,7 +338,7 @@ function NoteModal({ note, onClose }: { note: MockNote; onClose: () => void }) {
               {note.category.toUpperCase()}
             </span>
             <h2 style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "1.15rem",
               fontWeight: 700,
               color: "#ede9fe",
@@ -354,7 +354,7 @@ function NoteModal({ note, onClose }: { note: MockNote; onClose: () => void }) {
                   background: "#221836",
                   padding: "0.15rem 0.45rem",
                   borderRadius: "4px",
-                  fontFamily: "JetBrains Mono, monospace",
+                  fontFamily: "var(--font-sans)",
                 }}>
                   #{tag}
                 </span>
@@ -389,7 +389,7 @@ function NoteModal({ note, onClose }: { note: MockNote; onClose: () => void }) {
           flex: 1,
         }}>
           <pre style={{
-            fontFamily: "JetBrains Mono, monospace",
+            fontFamily: "var(--font-sans)",
             fontSize: "0.82rem",
             color: "#c4b5fd",
             lineHeight: 1.8,
@@ -410,14 +410,14 @@ function NoteModal({ note, onClose }: { note: MockNote; onClose: () => void }) {
           alignItems: "center",
           flexShrink: 0,
         }}>
-          <span style={{ fontSize: "0.68rem", color: "#3d2f5a", fontFamily: "JetBrains Mono, monospace" }}>
+          <span style={{ fontSize: "0.68rem", color: "#3d2f5a", fontFamily: "var(--font-sans)" }}>
             sample note — sign in to create your own
           </span>
           <Link href="/sign-up" style={{
             padding: "0.45rem 1rem",
             background: "#c4b5fd",
             color: "#0f0b1a",
-            fontFamily: "JetBrains Mono, monospace",
+            fontFamily: "var(--font-sans)",
             fontSize: "0.75rem",
             fontWeight: 700,
             textDecoration: "none",
@@ -485,7 +485,7 @@ export default function HomePage() {
             </div>
 
             <h1 style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "clamp(2rem, 5vw, 3.2rem)",
               fontWeight: 700,
               lineHeight: 1.2,
@@ -500,7 +500,7 @@ export default function HomePage() {
             </h1>
 
             <p style={{
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               fontSize: "0.92rem",
               color: "#7c6a9e",
               lineHeight: 1.9,
@@ -519,7 +519,7 @@ export default function HomePage() {
                 padding: "0.8rem 1.8rem",
                 background: "#c4b5fd",
                 color: "#0f0b1a",
-                fontFamily: "JetBrains Mono, monospace",
+                fontFamily: "var(--font-sans)",
                 fontWeight: 700,
                 fontSize: "0.875rem",
                 textDecoration: "none",
@@ -536,7 +536,7 @@ export default function HomePage() {
                   border: "1px solid rgba(196,181,253,0.3)",
                   color: "#c4b5fd",
                   background: "transparent",
-                  fontFamily: "JetBrains Mono, monospace",
+                  fontFamily: "var(--font-sans)",
                   fontWeight: 500,
                   fontSize: "0.875rem",
                   textDecoration: "none",
@@ -551,7 +551,7 @@ export default function HomePage() {
               marginTop: "2.5rem",
               fontSize: "0.68rem",
               color: "#3d2f5a",
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               letterSpacing: "0.08em",
             }}>
               if it's not written down, you'll forget it. — kanisha ✦
@@ -581,7 +581,7 @@ export default function HomePage() {
                 <div style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#c4b5fd", opacity: 0.8 }} />
                 <span style={{
                   marginLeft: "0.75rem",
-                  fontFamily: "JetBrains Mono, monospace",
+                  fontFamily: "var(--font-sans)",
                   fontSize: "0.7rem",
                   color: "#7c6a9e",
                 }}>
@@ -600,8 +600,8 @@ export default function HomePage() {
                   alignItems: "center",
                   gap: "0.5rem",
                 }}>
-                  <span style={{ color: "#7c6a9e", fontSize: "0.75rem", fontFamily: "JetBrains Mono, monospace" }}>/search</span>
-                  <span style={{ color: "#3d2f5a", fontSize: "0.75rem", fontFamily: "JetBrains Mono, monospace", flex: 1 }}>search notes...</span>
+                  <span style={{ color: "#7c6a9e", fontSize: "0.75rem", fontFamily: "var(--font-sans)" }}>/search</span>
+                  <span style={{ color: "#3d2f5a", fontSize: "0.75rem", fontFamily: "var(--font-sans)", flex: 1 }}>search notes...</span>
                 </div>
               </div>
 
@@ -645,14 +645,14 @@ export default function HomePage() {
                         borderRadius: "4px",
                         fontSize: "0.6rem",
                         color,
-                        fontFamily: "JetBrains Mono, monospace",
+                        fontFamily: "var(--font-sans)",
                         marginBottom: "0.6rem",
                         letterSpacing: "0.04em",
                       }}>
                         {note.category}
                       </div>
                       <p style={{
-                        fontFamily: "JetBrains Mono, monospace",
+                        fontFamily: "var(--font-sans)",
                         fontSize: "0.75rem",
                         fontWeight: 600,
                         color: "#ede9fe",
@@ -662,7 +662,7 @@ export default function HomePage() {
                         {note.title}
                       </p>
                       <p style={{
-                        fontFamily: "JetBrains Mono, monospace",
+                        fontFamily: "var(--font-sans)",
                         fontSize: "0.65rem",
                         color: "#7c6a9e",
                         lineHeight: 1.6,
@@ -681,7 +681,7 @@ export default function HomePage() {
                             background: "#221836",
                             padding: "0.1rem 0.4rem",
                             borderRadius: "4px",
-                            fontFamily: "JetBrains Mono, monospace",
+                            fontFamily: "var(--font-sans)",
                           }}>
                             #{tag}
                           </span>
@@ -698,7 +698,7 @@ export default function HomePage() {
               marginTop: "1rem",
               fontSize: "0.68rem",
               color: "#3d2f5a",
-              fontFamily: "JetBrains Mono, monospace",
+              fontFamily: "var(--font-sans)",
               letterSpacing: "0.08em",
             }}>
               click any note to preview ✦
@@ -712,7 +712,7 @@ export default function HomePage() {
         padding: "1.25rem",
         textAlign: "center",
         color: "#3d2f5a",
-        fontFamily: "JetBrains Mono, monospace",
+        fontFamily: "var(--font-sans)",
         fontSize: "0.72rem",
       }}>
         <span style={{ color: "#c4b5fd", opacity: 0.6 }}>✦</span> by kanisha &nbsp;·&nbsp; <span style={{ fontStyle: "italic" }}>"write it down before you forget it"</span>
