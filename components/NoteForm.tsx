@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import dynamic from "next/dynamic";
 import type { Note } from "@/lib/notes";
 import CategoryBadge from "./CategoryBadge";
+import { uploadImageAction } from "@/app/actions/upload-image";
 
 const MarkdownPreview = dynamic(() => import("./MarkdownPreview"), { ssr: false });
 
@@ -36,6 +37,10 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
   const [category, setCategory] = useState(note?.category ?? "General");
   const [tags, setTags] = useState(note?.tags?.join(", ") ?? "");
   const [tab, setTab] = useState<"write" | "preview">("write");
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if ((e.ctrlKey || e.metaKey) && e.key === "s") {
@@ -49,6 +54,57 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleKeyDown]);
+
+  const insertImageAtCursor = useCallback(async (file: File) => {
+    setUploadError(null);
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const { url } = await uploadImageAction(fd);
+
+      const textarea = textareaRef.current;
+      const altText = file.name.replace(/\.[^.]+$/, "") || "image";
+      const mdImage = `![${altText}](${url})`;
+
+      if (textarea) {
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const newContent = content.slice(0, start) + mdImage + content.slice(end);
+        setContent(newContent);
+        setTimeout(() => {
+          textarea.selectionStart = textarea.selectionEnd = start + mdImage.length;
+          textarea.focus();
+        }, 0);
+      } else {
+        setContent((prev) => prev + "\n" + mdImage);
+      }
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }, [content]);
+
+  const handleImageUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    await insertImageAtCursor(file);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }, [insertImageAtCursor]);
+
+  const handlePaste = useCallback(async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = Array.from(e.clipboardData.items);
+    const imageItem = items.find((item) => item.type.startsWith("image/"));
+    if (!imageItem) return;
+    e.preventDefault();
+    const file = imageItem.getAsFile();
+    if (!file) return;
+    // Give it a name since pasted images don't have one
+    const ext = imageItem.type.split("/")[1] ?? "png";
+    const namedFile = new File([file], `pasted-image.${ext}`, { type: imageItem.type });
+    await insertImageAtCursor(namedFile);
+  }, [insertImageAtCursor]);
 
   return (
     <div style={{ minHeight: "calc(100vh - 56px)", background: "#0f0b1a", padding: "2rem 1.5rem" }}>
@@ -184,14 +240,66 @@ export default function NoteForm({ action, mode, note }: NoteFormProps) {
                 <span style={{ color: "#7c6a9e", fontSize: "0.7rem", fontFamily: "var(--font-sans)" }}>
                   editor.md
                 </span>
-                <span style={{ marginLeft: "auto", color: "#3d2f5a", fontSize: "0.65rem", fontFamily: "var(--font-sans)" }}>
-                  {content.split(/\s+/).filter(Boolean).length} words
-                </span>
+                <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  <button
+                    type="button"
+                    disabled={uploading}
+                    onClick={() => fileInputRef.current?.click()}
+                    title="Insert image"
+                    style={{
+                      background: "transparent",
+                      border: "1px solid #2e1f4a",
+                      color: uploading ? "#3d2f5a" : "#7c6a9e",
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "0.65rem",
+                      padding: "0.2rem 0.5rem",
+                      cursor: uploading ? "not-allowed" : "pointer",
+                      borderRadius: "4px",
+                      transition: "all 0.2s",
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!uploading) {
+                        (e.target as HTMLButtonElement).style.borderColor = "#c4b5fd";
+                        (e.target as HTMLButtonElement).style.color = "#c4b5fd";
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.target as HTMLButtonElement).style.borderColor = "#2e1f4a";
+                      (e.target as HTMLButtonElement).style.color = uploading ? "#3d2f5a" : "#7c6a9e";
+                    }}
+                  >
+                    {uploading ? "uploading..." : "insert image"}
+                  </button>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    style={{ display: "none" }}
+                    onChange={handleImageUpload}
+                  />
+                  <span style={{ color: "#3d2f5a", fontSize: "0.65rem", fontFamily: "var(--font-sans)" }}>
+                    {content.split(/\s+/).filter(Boolean).length} words
+                  </span>
+                </div>
               </div>
+              {uploadError && (
+                <div style={{
+                  background: "rgba(239,68,68,0.1)",
+                  border: "1px solid rgba(239,68,68,0.3)",
+                  color: "#fca5a5",
+                  fontFamily: "var(--font-sans)",
+                  fontSize: "0.7rem",
+                  padding: "0.3rem 0.75rem",
+                }}>
+                  {uploadError}
+                </div>
+              )}
               <textarea
+                ref={textareaRef}
                 name="content"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+                onPaste={handlePaste}
                 placeholder={"# My Note\n\nStart writing in **markdown**...\n\n```sql\nSELECT * FROM notes WHERE user_id = ?;\n```"}
                 required
                 rows={24}
