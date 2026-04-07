@@ -35,3 +35,28 @@ export async function updateNoteAction(id: string, formData: FormData) {
   revalidatePath("/public");
   redirect(`/notes/${id}`);
 }
+
+export async function autoSaveNoteAction(
+  id: string,
+  data: { title: string; content: string; category: string; tags: string }
+): Promise<{ ok: boolean; error?: string }> {
+  const { userId } = await auth();
+  if (!userId) return { ok: false, error: "Not authenticated" };
+
+  const tags = data.tags
+    ? data.tags.split(",").map((t) => t.trim().toLowerCase()).filter(Boolean)
+    : [];
+
+  try {
+    await updateNote(userId, id, {
+      title: data.title.trim() || "Untitled",
+      content: data.content.trim(),
+      category: data.category || "General",
+      tags,
+    });
+    revalidatePath("/public");
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: err instanceof Error ? err.message : "Save failed" };
+  }
+}

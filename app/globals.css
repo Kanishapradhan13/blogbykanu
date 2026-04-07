@@ -368,6 +368,176 @@
   color: #c4b5fd;
 }
 
+/* ── Rich Text Editor (Tiptap) ────────────────── */
+.rich-editor-content {
+  min-height: 450px;
+  padding: 1.25rem;
+  background: #130f20;
+  color: #ede9fe;
+  font-family: var(--font-family-sans);
+  font-size: 0.92rem;
+  line-height: 1.75;
+  outline: none;
+}
+.rich-editor-content:focus { outline: none; }
+
+/* Placeholder */
+.rich-editor-content p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #3d2f5a;
+  float: left;
+  pointer-events: none;
+  height: 0;
+}
+
+/* Headings */
+.rich-editor-content h1,
+.rich-editor-content h2,
+.rich-editor-content h3 {
+  color: #c4b5fd;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 8px rgba(196,181,253,0.3);
+}
+.rich-editor-content h1 { font-size: 1.6rem; }
+.rich-editor-content h2 { font-size: 1.3rem; }
+.rich-editor-content h3 { font-size: 1.1rem; }
+
+/* Paragraph */
+.rich-editor-content p { margin-bottom: 0.75rem; }
+
+/* Lists */
+.rich-editor-content ul,
+.rich-editor-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.rich-editor-content ul li { list-style-type: disc; }
+.rich-editor-content ol li { list-style-type: decimal; }
+.rich-editor-content li { margin-bottom: 0.2rem; }
+
+/* Inline code */
+.rich-editor-content code:not(pre code) {
+  background: #221836;
+  color: #c4b5fd;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.78rem;
+  border: 1px solid #2e1f4a;
+  font-family: "Fira Code", monospace;
+  border-radius: 3px;
+}
+
+/* Code block */
+.rich-editor-content pre {
+  background: #221836;
+  border: 1px solid #2e1f4a;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  position: relative;
+}
+.rich-editor-content pre code {
+  color: #ede9fe;
+  font-size: 0.78rem;
+  font-family: "Fira Code", monospace;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* Blockquote */
+.rich-editor-content blockquote {
+  border-left: 2px solid #f0abfc;
+  padding-left: 1rem;
+  color: #7c6a9e;
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+/* HR */
+.rich-editor-content hr {
+  border: none;
+  border-top: 1px solid #2e1f4a;
+  margin: 1.25rem 0;
+}
+
+/* Images */
+.rich-editor-content img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  border: 1px solid #2e1f4a;
+}
+
+/* Tables — target both .tiptap (always added by Tiptap) and .rich-editor-content */
+.tiptap table,
+.rich-editor-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+  table-layout: fixed;
+}
+.tiptap th,
+.rich-editor-content th {
+  background: #2d1f4e;
+  color: #c4b5fd;
+  font-weight: 600;
+  border: 1px solid #5a3f8a;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  position: relative;
+}
+.tiptap td,
+.rich-editor-content td {
+  border: 1px solid #4a3070;
+  padding: 0.5rem 0.75rem;
+  background: #1e1535;
+  position: relative;
+  min-width: 60px;
+}
+/* Selected cell highlight */
+.tiptap .selectedCell::after,
+.rich-editor-content .selectedCell::after {
+  background: rgba(196,181,253,0.2);
+  content: "";
+  left: 0; right: 0; top: 0; bottom: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+/* Column resize handle */
+.tiptap .column-resize-handle,
+.rich-editor-content .column-resize-handle {
+  background-color: #c4b5fd;
+  bottom: -2px;
+  pointer-events: none;
+  position: absolute;
+  right: -2px;
+  top: 0;
+  width: 2px;
+}
+/* Table wrapper added by Tiptap */
+.tiptap .tableWrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+/* Bold / italic / underline / strike */
+.rich-editor-content strong { color: #ede9fe; font-weight: 600; }
+.rich-editor-content em { color: #c4b5fd; font-style: italic; }
+.rich-editor-content u { text-decoration: underline; }
+.rich-editor-content s { text-decoration: line-through; opacity: 0.6; }
+
+/* Selected text */
+.rich-editor-content ::selection { background: rgba(196,181,253,0.2); }
+
+/* Focus ring on the wrapper */
+.rich-editor-content:focus-within { outline: none; }
+
 /* ── Clerk overrides ──────────────────────────── */
 .cl-rootBox { font-family: var(--font-family-sans) !important; }
 .cl-card {

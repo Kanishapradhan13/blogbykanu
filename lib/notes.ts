@@ -21,8 +21,22 @@ export type CreateNoteInput = {
 
 export type UpdateNoteInput = Partial<CreateNoteInput>;
 
-function generateExcerpt(content: string, maxLength = 160): string {
-  const stripped = content
+function stripToPlainText(content: string): string {
+  if (content.trim().startsWith("<")) {
+    // HTML content from the rich text editor
+    return content
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&nbsp;/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+  // Markdown content (legacy notes)
+  return content
     .replace(/#{1,6}\s+/g, "")
     .replace(/\*\*([^*]+)\*\*/g, "$1")
     .replace(/\*([^*]+)\*/g, "$1")
@@ -30,7 +44,10 @@ function generateExcerpt(content: string, maxLength = 160): string {
     .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
     .replace(/\n+/g, " ")
     .trim();
+}
 
+function generateExcerpt(content: string, maxLength = 160): string {
+  const stripped = stripToPlainText(content);
   if (stripped.length <= maxLength) return stripped;
   return stripped.slice(0, maxLength).replace(/\s+\S*$/, "") + "...";
 }
@@ -148,7 +165,7 @@ export async function deleteNote(userId: string, id: string): Promise<void> {
 }
 
 export function getWordCount(content: string): number {
-  return content.trim().split(/\s+/).filter(Boolean).length;
+  return stripToPlainText(content).split(/\s+/).filter(Boolean).length;
 }
 
 export function getReadTime(content: string): number {
